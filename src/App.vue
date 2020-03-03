@@ -1,16 +1,17 @@
 <template>
     <div id="app">
-        <posts></posts>
+        <nav-bar></nav-bar>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import Posts from './components/Posts.vue'
+    import NavBar from './components/NavBar.vue'
 
     export default {
         name: 'App',
         components: {
-            Posts
+            NavBar
         }
     }
 </script>
@@ -22,6 +23,5 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
     }
 </style>

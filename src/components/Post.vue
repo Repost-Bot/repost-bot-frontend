@@ -31,7 +31,7 @@
 <script>
 
     export default {
-        props: ["image", "text"],
+        props: ["image", "text", "source"],
         data: function () {
             return {
                 editable: false
@@ -42,8 +42,11 @@
                 this.$http.post(
                     this.$constants.createPost,
                     {
-                        image: this.image,
-                        content: this.text
+                        domainId: this.source,
+                        post: {
+                            images: [this.image],
+                            text: this.text
+                        }
                     }
                 )
             }

@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <div class="controls">
+            <b-form-select id="source" v-model="source" :options="sources" class="controls"></b-form-select>
             <button type="submit" style="width: 100%" class="btn btn-primary controls" @click="loadMore">More</button>
 
             <div class="form-row">
@@ -15,7 +16,8 @@
                 </div>
             </div>
         </div>
-        <post v-bind:key="post.text" v-for="post in posts" :image="post.image" :text="post.content" class="post"></post>
+        <post v-bind:key="post.text" v-for="post in posts" :image="post.images[0]" :text="post.text" :source="source"
+              class="post"></post>
 
         <button
                 type="submit"
@@ -23,7 +25,8 @@
                 class="btn btn-primary controls"
                 @click="loadLess"
                 :disabled="offset === 0"
-        >Less</button>
+        >Less
+        </button>
     </div>
 </template>
 
@@ -36,7 +39,9 @@
             return {
                 posts: [],
                 count: 10,
-                offset: 0
+                offset: 0,
+                sources: [],
+                source: null
             }
         },
         methods: {
@@ -49,23 +54,30 @@
                 this.load();
             },
             load: function () {
+                console.log(this.source);
                 this.$http.get(
-                    this.$constants.getPosts,
+                    this.$constants.getPosts + '/' + this.source.domainType + '/' + this.source.domainId,
                     {params: {count: this.count, offset: this.offset}}
                 )
                     .then(response => {
                         this.posts = response.data
                     })
+            },
+            getSources: function () {
+                this.$http.get(
+                    this.$constants.getSources,
+                )
+                    .then(response => {
+                        this.sources = response.data;
+                        this.sources.forEach(item => {
+                            item.text = item.name;
+                            item.value = {domainType: item.domainId.domainType, domainId: item.domainId.domainId}
+                        });
+                    });
             }
         },
         mounted() {
-            this.$http.get(
-                this.$constants.getPosts,
-                {params: {count: this.count, offset: this.offset}}
-            )
-                .then(response => {
-                    this.posts = response.data
-                })
+            this.getSources();
         }
     }
 </script>
