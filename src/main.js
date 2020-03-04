@@ -8,7 +8,7 @@ import { routes } from './router.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-const apiUrl = process.env.API_URL || 'http://localhost:8080';
+const apiUrl = 'http://localhost:8080';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -23,7 +23,11 @@ Vue.prototype.$constants = {
   createPost: apiUrl + '/posts',
   getPosts: apiUrl + '/posts',
   createSource: apiUrl + '/sources',
-  getSources: apiUrl + '/sources'
+  getSources: apiUrl + '/sources',
+  queue: apiUrl + '/queue',
+  approveMessage: apiUrl + '/queue/approve',
+  declineMessage: apiUrl + '/queue/decline',
+  settings: apiUrl + '/settings'
 };
 
 new Vue({

@@ -16,7 +16,12 @@
                 </div>
             </div>
         </div>
-        <post v-bind:key="post.text" v-for="post in posts" :image="post.images[0]" :text="post.text" :source="source"
+        <post v-bind:key="idx"
+              v-for="(post, idx) in posts"
+              :image="post.images[0]"
+              :text="post.text"
+              :source="source"
+              :source-id="post.sourceId"
               class="post"></post>
 
         <button

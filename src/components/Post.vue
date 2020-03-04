@@ -31,7 +31,7 @@
 <script>
 
     export default {
-        props: ["image", "text", "source"],
+        props: ["image", "text", "source", "sourceId"],
         data: function () {
             return {
                 editable: false
@@ -45,7 +45,8 @@
                         domainId: this.source,
                         post: {
                             images: [this.image],
-                            text: this.text
+                            text: this.text,
+                            sourceId: this.sourceId
                         }
                     }
                 )
