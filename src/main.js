@@ -27,7 +27,8 @@ Vue.prototype.$constants = {
   queue: apiUrl + '/queue',
   approveMessage: apiUrl + '/queue/approve',
   declineMessage: apiUrl + '/queue/decline',
-  settings: apiUrl + '/settings'
+  settings: apiUrl + '/settings',
+  home: apiUrl + '/'
 };
 
 new Vue({
