@@ -1,5 +1,5 @@
 <template>
-    <b-card :img-src="image" img-left>
+    <b-card :img-src="images[0]" img-left>
         <b-form-textarea
                 max-rows="10"
                 v-model="text"
@@ -31,7 +31,7 @@
 <script>
 
     export default {
-        props: ["image", "text", "source", "sourceId"],
+        props: ["images", "text", "source", "sourceId"],
         data: function () {
             return {
                 editable: false
@@ -44,7 +44,7 @@
                     {
                         domainId: this.source,
                         post: {
-                            images: [this.image],
+                            images: this.images,
                             text: this.text,
                             sourceId: this.sourceId
                         }

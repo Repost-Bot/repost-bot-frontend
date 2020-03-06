@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <b-card
-                :img-src="item.imageUrl"
+                :img-src="item.imageUrl.split(',')[0]"
                 v-for="(item, idx) in items"
                 v-bind:key="idx"
                 class="item"
@@ -10,7 +10,7 @@
         >
             <h4>{{item.status}}</h4>
             <b-card-text>
-                {{item.text.substring(0, 100)}}...
+                {{item.text.substring(0, 100)}}r...
             </b-card-text>
             <div class="form-row">
                 <div class="col">

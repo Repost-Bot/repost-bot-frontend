@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <b-card
-                :img-src="item.imageUrl"
+                :img-src="item.imageUrl.split(',')[0]"
                 v-for="(item, idx) in items"
                 v-bind:key="idx"
                 class="item"

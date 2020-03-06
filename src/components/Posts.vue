@@ -18,7 +18,7 @@
         </div>
         <post v-bind:key="idx"
               v-for="(post, idx) in posts"
-              :image="post.images[0]"
+              :images="post.images"
               :text="post.text"
               :source="source"
               :source-id="post.sourceId"

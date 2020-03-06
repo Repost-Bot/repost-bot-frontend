@@ -4,12 +4,15 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { routes } from './router.js'
+import Viewer from 'v-viewer'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'viewerjs/dist/viewer.css'
 
 const apiUrl = 'http://localhost:8080';
 
+Vue.use(Viewer);
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);

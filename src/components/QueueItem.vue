@@ -11,25 +11,6 @@
 
     export default {
         components: {MobileQueueItem, DesktopQueueItem},
-        props: ["image", "text", "source", "sourceId"],
-        data: function () {
-            return {
-                editable: false,
-                items: []
-            }
-        },
-        methods: {
-            approve: function (item) {
-                this.$http.post(this.$constants.approveMessage + '/' + item.id)
-            },
-            decline: function (item) {
-                this.$http.post(this.$constants.declineMessage + '/' + item.id)
-            }
-        },
-        mounted() {
-            this.$http.get(this.$constants.queue + "/" + this.$route.params.queueId)
-                .then(response => this.items = response.data);
-        },
         computed: {
             isMobile: () => window.innerWidth < 600
         }
