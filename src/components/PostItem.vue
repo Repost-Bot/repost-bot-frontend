@@ -9,7 +9,10 @@
                     :src="imgSrc"
                     :class="{'collapsed': collapsed}"
             ></b-card-img>
-            <b-card-text>
+            <b-card-text v-if="collapsed">
+                {{text.substring(0, 100)}}...
+            </b-card-text>
+            <b-card-text v-if="!collapsed">
                 {{text.substring(0, 100)}}...
             </b-card-text>
             <slot></slot>

@@ -10,7 +10,7 @@ import { routes } from './router.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-const apiUrl = process.env.API_HOST || 'http://localhost:8080';
+const apiUrl = 'http://15.236.60.223:8080';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
