@@ -13,7 +13,7 @@
                 {{text.substring(0, 100)}}...
             </b-card-text>
             <b-card-text v-if="!collapsed">
-                {{text.substring(0, 100)}}...
+                {{text}}
             </b-card-text>
             <slot></slot>
         </b-card>
