@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <div class="form-row controls">
+        <spinner :show="isLoading"></spinner>
+        <div class="form-row controls" :class="{'loading': isLoading}">
             <div class="col">
                 <button type="submit" style="width: 100%" class="btn btn-primary controls"
                         @click="settings.push({key: '', value: ''})">Add more
@@ -24,14 +25,19 @@
 </template>
 
 <script>
+    import Spinner from "./Spinner";
+
     export default {
+        components: {Spinner},
         data: function () {
             return {
-                settings: []
+                settings: [],
+                isLoading: false
             }
         },
         methods: {
             saveSettings: function () {
+                this.isLoading = true;
                 const result = this.settings
                     .filter(elem => elem.key !== '');
 
@@ -40,12 +46,15 @@
                         this.$constants.settings,
                         result
                     )
+                        .then(() => this.isLoading = false);
                 }
             }
         },
         mounted() {
+            this.isLoading = true;
             this.$http.get(this.$constants.settings)
                 .then(response => this.settings = response.data)
+                .then(() => this.isLoading = false);
         }
     }
 </script>
@@ -57,5 +66,9 @@
 
     .controls {
         margin-bottom: 60px;
+    }
+
+    .loading {
+        opacity: 0.5;
     }
 </style>

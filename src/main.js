@@ -1,3 +1,5 @@
+require('dotenv').config({path : '/out/repost-bot-frontend/.env'});
+
 import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource'
@@ -8,7 +10,7 @@ import { routes } from './router.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-const apiUrl = 'http://localhost:8080';
+const apiUrl = process.env.API_HOST || 'http://localhost:8080';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
