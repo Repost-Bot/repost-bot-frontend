@@ -1,13 +1,14 @@
 <template>
     <div class="container">
         <b-card
+                :title="title"
                 class="item"
                 border-variant="primary"
-                @click="collapsed = false"
         >
             <b-card-img
                     :src="imgSrc"
                     :class="{'collapsed': collapsed}"
+                    @click="collapsed = false"
             ></b-card-img>
             <b-card-text v-if="collapsed">
                 {{text.substring(0, 100)}}...
@@ -24,7 +25,8 @@
     export default {
         props: {
             text: String,
-            imgSrc: String
+            imgSrc: String,
+            title: String
         },
         data: () => {
             return {

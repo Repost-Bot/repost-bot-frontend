@@ -6,12 +6,15 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { routes } from './router.js'
+import VueToast from 'vue-toast-notification';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vue-toast-notification/dist/index.css';
 
 const apiUrl = process.env.API_HOST || 'http://localhost:8080';
 
+Vue.use(VueToast);
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);

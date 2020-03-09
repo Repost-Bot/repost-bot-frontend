@@ -21,15 +21,16 @@
                         <input type="text" class="form-control" placeholder="Offset" v-model="offset">
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-primary" @click="load" :disabled="source == null">Apply</button>
+                        <button type="submit" class="btn btn-primary" @click="load" :disabled="source == null">Apply
+                        </button>
                     </div>
                 </div>
             </div>
             <post-item v-bind:key="idx"
-                  v-for="(post, idx) in posts"
-                  :img-src="post.images[0]"
-                  :text="post.text"
-                  class="post">
+                       v-for="(post, idx) in posts"
+                       :img-src="post.images[0]"
+                       :text="post.text"
+                       class="post">
                 <div class="form-row">
                     <div class="col">
                         <b-button class="item-button" variant="outline-primary" @click="sendPost(post)">Edit</b-button>

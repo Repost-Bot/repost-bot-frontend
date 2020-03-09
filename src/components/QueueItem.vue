@@ -7,6 +7,7 @@
                     :key="idx"
                     :text="item.text"
                     :img-src="item.imageUrl.split(',')[0]"
+                    :title="item.status"
             >
                 <div class="form-row">
                     <div class="col">
@@ -15,7 +16,7 @@
                                 variant="outline-primary"
                                 v-b-modal="'modal' + idx"
                                 :disabled="isLoading"
-                        >View
+                        >Edit
                         </b-button>
                     </div>
                     <div class="col">
@@ -34,27 +35,14 @@
                         </b-button>
                     </div>
                 </div>
+                <b-modal :id="'modal' + idx">
+                    <b-form-textarea
+                            max-rows="10"
+                            v-model="item.text"
+                    >
+                    </b-form-textarea>
+                </b-modal>
             </post-item>
-            <!--            <b-card
-                                border-variant="primary"
-                                :img-src="item.imageUrl.split(',')[0]"
-                                v-for="(item, idx) in items"
-                                v-bind:key="idx"
-                                class="item"
-                        >
-                            <h4>{{item.status}}</h4>
-                            <b-card-text>
-                                {{item.text.substring(0, 100)}}r...
-                            </b-card-text>
-
-                            <b-modal :id="'modal' + idx">
-                                <b-form-textarea
-                                        max-rows="10"
-                                        v-model="item.text"
-                                >
-                                </b-form-textarea>
-                            </b-modal>
-                        </b-card>-->
         </div>
     </div>
 </template>
@@ -80,13 +68,21 @@
                 this.isLoading = true;
                 this.$http.post(this.$constants.approveMessage + '/' + item.id)
                     .then(() => this.load())
-                    .then(() => this.isLoading = false);
+                    .then(() => this.isLoading = false)
+                    .then(() => this.$toast.open({
+                        type: 'success',
+                        message: 'Item with id ' + item.id + ' approved'
+                    }));
             },
             decline: function (item) {
                 this.isLoading = true;
                 this.$http.post(this.$constants.declineMessage + '/' + item.id)
                     .then(() => this.load())
-                    .then(() => this.isLoading = false);
+                    .then(() => this.isLoading = false)
+                    .then(() => this.$toast.open({
+                        type: 'warning',
+                        message: 'Item with id ' + item.id + ' declined'
+                    }));
             },
             load: function () {
                 this.isLoading = true;
@@ -96,7 +92,11 @@
                             .filter(item => item.status !== 'DECLINED');
                         this.items.forEach(item => item.showModal = false);
                     })
-                    .then(() => this.isLoading = false);
+                    .then(() => this.isLoading = false)
+                    .then(() => this.$toast.open({
+                        type: 'success',
+                        message: 'Loaded ' + this.items.length + ' items'
+                    }));
             }
         },
         mounted() {

@@ -59,6 +59,10 @@
                     }
                 );
                 this.closeModal();
+                this.$toast.open({
+                   type: 'success',
+                   message: 'Source saved'
+                });
             },
             closeModal: function () {
                 this.$bvModal.hide('create-source');
