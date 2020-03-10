@@ -30,10 +30,9 @@ Vue.prototype.$constants = {
   createSource: apiUrl + '/sources',
   getSources: apiUrl + '/sources',
   queue: apiUrl + '/queue',
-  approveMessage: apiUrl + '/queue/approve',
-  declineMessage: apiUrl + '/queue/decline',
   settings: apiUrl + '/settings',
-  home: apiUrl + '/'
+  home: apiUrl + '/',
+  queuePost: apiUrl + '/queue/post'
 };
 
 new Vue({
