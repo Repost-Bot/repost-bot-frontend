@@ -7,9 +7,9 @@
                     :key="idx"
                     :text="item.text"
                     :img-src="item.imageUrl.split(',')[0]"
-                    :title="item.status"
+                    :title="item.status + ' -- post date: ' + item.dateRetrieve"
             >
-                <div class="form-row">
+                <div class="form-row" v-if="!['DELIVERED', 'DECLINED'].includes(item.status) ">
                     <div class="col">
                         <b-button
                                 class="card-button"
@@ -30,8 +30,12 @@
                         </b-button>
                     </div>
                     <div class="col">
-                        <b-button class="card-button" variant="danger" @click="decline(item)"
-                                  v-if="item.status !== 'DECLINED'">Decline
+                        <b-button class="card-button"
+                                  variant="danger"
+                                  @click="decline(item)"
+                                  v-if="item.status !== 'DECLINED'"
+                                  :disabled="isLoading"
+                        >Decline
                         </b-button>
                     </div>
                 </div>
@@ -89,7 +93,6 @@
                 this.$http.get(this.$constants.queue + "/" + this.$route.params.queueId)
                     .then(response => {
                         this.items = response.data
-                            .filter(item => item.status !== 'DECLINED');
                         this.items.forEach(item => item.showModal = false);
                     })
                     .then(() => this.isLoading = false)

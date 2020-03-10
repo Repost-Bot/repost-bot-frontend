@@ -6,14 +6,16 @@
 
 <script>
     export default {
-        props: ['show']
+        props: {
+            show: Boolean
+        }
     }
 </script>
 
 <style>
     .spinner {
         position: fixed;
-        left: 50%;
+        left: 40%;
         top: 35%;
     }
 </style>
