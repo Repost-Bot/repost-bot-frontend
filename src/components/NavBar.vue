@@ -7,9 +7,9 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <b-nav-item to="/posts">Posts</b-nav-item>
-                    <b-nav-item to="/queue">Queue</b-nav-item>
-                    <b-nav-item to="/input-sources">Sources</b-nav-item>
+                    <router-link to="/posts" tag="b-nav-item" active-class="active">Posts</router-link>
+                    <router-link to="/queue" tag="b-nav-item" active-class="active">Queue</router-link>
+                    <router-link to="/input-sources" tag="b-nav-item" active-class="active">Sources</router-link>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
