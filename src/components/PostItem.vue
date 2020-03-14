@@ -8,7 +8,7 @@
             <b-card-img
                     :src="imgSrc"
                     :class="{'collapsed': collapsed}"
-                    @click="collapsed = false"
+                    @click="collapsed = !collapsed"
             ></b-card-img>
             <b-card-text v-if="collapsed">
                 {{text.substring(0, 100)}}...
