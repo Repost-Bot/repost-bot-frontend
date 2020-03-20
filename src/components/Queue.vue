@@ -10,7 +10,7 @@
         </div>
         <div class="queue-row form-row" v-for="(elem, idx) in queue" v-bind:key="idx">
             <div class="col">
-                <a><h4>{{elem.queueId}}</h4></a>
+                <router-link :to="'/queue/' + elem.queueId"><h4>{{elem.queueId}}</h4></router-link>
             </div>
             <div class="col">
                 <h4>{{elem.dateCreated}}</h4>
@@ -38,5 +38,7 @@
         margin-bottom: 60px;
     }
 
-
+    .queue-row {
+        margin-bottom: 30px;
+    }
 </style>

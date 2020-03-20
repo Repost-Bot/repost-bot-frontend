@@ -11,5 +11,6 @@ export const routes = [
     {path: '/queue/:queueId', component: QueueItem},
     {path: '/input-sources', component: Sources},
     {path: '/settings', component: Settings},
-    {path: '/', component: Home}
+    {path: '/', component: Home},
+    {path: '*', redirect: '/'}
 ];
