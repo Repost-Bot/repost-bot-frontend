@@ -7,11 +7,8 @@ import Home from './components/Home.vue'
 
 export const routes = [
     {path: '/posts', component: Posts},
-    {
-        path: '/queue', component: Queue, children: [
-            {path: ':queueId', component: QueueItem}
-        ]
-    },
+    {path: '/queue', component: Queue},
+    {path: '/queue/:queueId', component: QueueItem},
     {path: '/input-sources', component: Sources},
     {path: '/settings', component: Settings},
     {path: '/', component: Home},

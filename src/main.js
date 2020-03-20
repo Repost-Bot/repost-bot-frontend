@@ -19,21 +19,21 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 const apiUrl = process.env.API_HOST || 'http://localhost:8080';
-Vue.http.options.root = apiUrl;
+// Vue.http.options.root = apiUrl;
 
 Vue.config.productionTip = false;
 
 const router = new VueRouter({routes});
 
 Vue.prototype.$constants = {
-  createPost: 'posts',
-  getPosts: 'posts',
-  createSource: 'sources',
-  getSources: 'sources',
-  queue: 'queue',
-  settings: 'settings',
-  home: '',
-  queuePost: 'queue/post'
+  createPost: apiUrl + 'posts',
+  getPosts: apiUrl + 'posts',
+  createSource: apiUrl + 'sources',
+  getSources: apiUrl + 'sources',
+  queue: apiUrl + 'queue',
+  settings: apiUrl + 'settings',
+  home: apiUrl + '',
+  queuePost: apiUrl + 'queue/post'
 };
 
 new Vue({
