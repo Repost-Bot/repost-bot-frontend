@@ -81,7 +81,7 @@
             },
             editPost: function (item) {
                 this.isLoading = true;
-                this.$http.put(this.$constants.queuePost + '/' + item.id, item)
+                this.$http.put(`${this.$store.state.apiConstants.queuePost}/${item.id}`, item)
                     .then(() => this.load())
                     .then(() => this.isLoading = false)
                     .then(() => this.closeModal(item.id))
@@ -92,7 +92,7 @@
             },
             approve: function (item) {
                 this.isLoading = true;
-                this.$http.post(this.$constants.queuePost + '/' + item.id + '/approve')
+                this.$http.post(`${this.$store.state.apiConstants.queuePost}/${item.id}/approve`)
                     .then(() => this.load())
                     .then(() => this.isLoading = false)
                     .then(() => this.$toast.open({
@@ -102,7 +102,7 @@
             },
             decline: function (item) {
                 this.isLoading = true;
-                this.$http.post(this.$constants.queuePost + '/' + item.id + '/decline')
+                this.$http.post(`${this.$store.state.apiConstants.queuePost}/${item.id}/decline`)
                     .then(() => this.load())
                     .then(() => this.isLoading = false)
                     .then(() => this.$toast.open({
@@ -115,7 +115,7 @@
             },
             load: function () {
                 this.isLoading = true;
-                this.$http.get(this.$constants.queue + "/" + this.$route.params.queueId)
+                this.$http.get(`${this.$store.state.apiConstants.queue}/${this.$route.params.queueId}`)
                     .then(response => {
                         this.items = response.data;
                         this.items.forEach(item => item.showModal = false);

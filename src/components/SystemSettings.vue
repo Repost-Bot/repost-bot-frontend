@@ -41,9 +41,9 @@
                 const result = this.settings
                     .filter(elem => elem.key !== '');
 
-                if (result.length != 0) {
+                if (result.length !== 0) {
                     this.$http.post(
-                        this.$constants.settings,
+                        this.$store.state.apiConstants.settings,
                         result
                     )
                         .then(() => this.isLoading = false);
@@ -52,7 +52,7 @@
         },
         mounted() {
             this.isLoading = true;
-            this.$http.get(this.$constants.settings)
+            this.$http.get(this.$store.state.apiConstants.settings)
                 .then(response => this.settings = response.data)
                 .then(() => this.isLoading = false);
         }

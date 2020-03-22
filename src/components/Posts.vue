@@ -99,7 +99,7 @@
             load: function () {
                 this.isLoading = true;
                 this.$http.get(
-                    this.$constants.getPosts + '/' + this.source.domainType + '/' + this.source.domainId,
+                    this.$store.state.apiConstants.getPosts + '/' + this.source.domainType + '/' + this.source.domainId,
                     {params: {count: this.count, offset: this.offset}}
                 )
                     .then(response => {
@@ -110,7 +110,7 @@
             getSources: function () {
                 this.isLoading = true;
                 this.$http.get(
-                    this.$constants.getSources,
+                    this.$store.state.apiConstants.getSources,
                 )
                     .then(response => {
                         this.sources = response.data;

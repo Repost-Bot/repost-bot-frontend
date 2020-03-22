@@ -27,7 +27,8 @@
             }
         },
         mounted() {
-            this.$http.get(this.$constants.home)
+            console.log(this.$store);
+            this.$http.get(this.$store.state.apiConstants.home)
                 .then(response => this.stats = response.data);
         }
     }

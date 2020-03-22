@@ -27,7 +27,7 @@
             }
         },
         mounted() {
-            this.$http.get(this.$constants.queue)
+            this.$http.get(this.$store.state.apiConstants.queue)
                 .then(response => this.queue = response.data);
         }
     }

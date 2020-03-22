@@ -70,7 +70,7 @@
             },
             getSources: function () {
                 this.$http.get(
-                    this.$constants.getSources,
+                    this.$store.state.apiConstants.getSources,
                 )
                 .then(response => {
                     this.sources = response.data
