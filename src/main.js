@@ -18,7 +18,7 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-const apiUrl = process.env.API_HOST || 'http://localhost:8080';
+const apiUrl = process.env.API_HOST || 'http://localhost:8080/';
 // Vue.http.options.root = apiUrl;
 
 Vue.config.productionTip = false;
@@ -33,7 +33,9 @@ Vue.prototype.$constants = {
   queue: apiUrl + 'queue',
   settings: apiUrl + 'settings',
   home: apiUrl + '',
-  queuePost: apiUrl + 'queue/post'
+  queuePost: apiUrl + 'queue/post',
+  users: apiUrl + 'users',
+  confirmUser: apiUrl + 'users/confirm'
 };
 
 new Vue({
