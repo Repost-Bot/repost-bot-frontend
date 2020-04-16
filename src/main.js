@@ -18,7 +18,7 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-const apiUrl = process.env.API_HOST || 'http://localhost:8080/';
+const apiUrl = 'http://localhost:8080/';
 // Vue.http.options.root = apiUrl;
 
 Vue.config.productionTip = false;

@@ -29,20 +29,20 @@
             }
         },
         methods: {
-          setPassword() {
-              this.$http.post(
-                  this.$constants.confirmUser,
-                  {
-                      token: this.$route.params.token,
-                      password: this.password
-                  }
-              )
-              .then(() => this.$router.push('/'))
-          }
+            setPassword() {
+                this.$http.post(
+                    this.$constants.confirmUser,
+                    {
+                        token: this.$route.params.token,
+                        password: this.password
+                    }
+                )
+                    .then(() => this.$router.push('/'))
+            }
         },
         mounted() {
             this.$http.get(this.$constants.confirmUser, {params: {token: this.$route.params.token}})
-                .then(response => this.isValid = response.data)
+                .then(() => this.isValid = true, () => this.isValid = false)
         }
     }
 </script>
