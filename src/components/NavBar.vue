@@ -1,7 +1,7 @@
 <template>
     <div class="nav-bar">
         <b-navbar toggleable="lg" type="dark" variant="primary">
-            <b-navbar-brand>KitchenFit Bot</b-navbar-brand>
+            <b-navbar-brand>VUE_APP_TITLE Bot</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

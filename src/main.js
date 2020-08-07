@@ -1,5 +1,3 @@
-require('dotenv').config({path : '/out/repost-bot-frontend/.env'});
-
 import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource'
@@ -18,7 +16,7 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-const apiUrl = 'http://localhost:8080/';
+const apiUrl = 'VUE_APP_API_BASE_URL';
 // Vue.http.options.root = apiUrl;
 
 Vue.config.productionTip = false;
